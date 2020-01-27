@@ -7,9 +7,9 @@
     <script src='https://aframe.io/releases/0.9.2/aframe.min.js'></script>
     <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-    <script>
+    <!-- <script>
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
-    </script>
+    </script> -->
 </head>
 
 <body style='margin: 0; overflow: hidden;'>
@@ -19,16 +19,14 @@
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
         
         <a-camera gps-camera rotation-reader></a-camera>
-        <a-entity  id="mario" gltf-model="./assets/object/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: 12.489820; latitude: 41.892590;" animation-mixer/>
+     <!-- <a-entity  id="mario" gltf-model="./assets/magnemite/scene.gltf" rotation="0 0 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: 12.489820; latitude: 41.892590;" animation-mixer/> -->
+        <a-box position='0 0.5 0' material='opacity: 0.5;' gps-entity-place="longitude: 12.9077; latitude: 77.6011;"></a-box>
     </a-scene>
     
     <script>
-        AFRAME.registerComponent('scene.gltf', {
-        init: function () {
-     var el = this.el;
-     el.getOrCreateObject3D('mesh', THREE.Mesh);
-     el.getObject3D('mesh');  // Returns THREE.Mesh that was just created.
-  }
-});
+var sceneEl = document.querySelector('a-scene');
+var entity = sceneEl.querySelector('a-entity');
+console.log(entity.sceneEl === sceneEl);  
+entity.pause();
     </script>
 </body>
